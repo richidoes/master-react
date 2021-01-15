@@ -1,68 +1,65 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplicación Web que nos muestra un listado de pokemones traido de una
+Api externa (pokeapi.co), podremos ver algunos de los atributos y la
+apariencia del pokemon que seleccionemos.
 
-## Available Scripts
+La web utiliza un sistema de rutas protegidas donde
+solo el usuario registrado tiene acceso al listado asi como a otras
+caracteristicas como cambiar su foto de perfil y su nombre de usuario.
 
-In the project directory, you can run:
+## Inicio rapido
 
-### `yarn start`
+------------------- INSTRUCCIONES DE USO -------------------------------
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1-**descarga el repositorio**
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Si desea ejecutar el proyecto tenga en cuenta lo siguiente:
 
-### `yarn test`
+2-Asegurese de tener instalado: Node.js.
+3-use el terminal y acceda al directorio donde coloco el proyecto, una vez dentro **Ejecuta los comandos:**
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```shell
 
-### `yarn build`
+yarn install / npm install
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+4-Asegurese de tener un proyecto de firebase creado, ya que necesitara agregar los datos de su propia base de datos.
+5-Ahora entre al la siguiente ruta: _src/_ y dentro cree un fichero con el nombre _firebase.js_
+6-Dentro de _firebase.js_ coloque la informacion de configuracion de su proyecto de firebase.
+7-Tambien es necesario hacer las importaciones y exportaciones mostradas en el ejemplo:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `yarn eject`
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
+import "firebase/storage";
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+const firebaseConfig = {
+apiKey: "suApiKey",
+authDomain: "SuDominio",
+databaseURL: "dbURL",
+projectId: "SuIdDeProyecto",
+storageBucket: "",
+messagingSenderId: "",
+appId: "",
+};
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+const auth = firebase.auth();
+const db = firebase.firestore();
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+export { firebase, auth, db };
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+8-Una vez que alla concluido con los pasos anteriores , solo queda iniciar su proyecto:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```shell
 
-### Code Splitting
+yarn start / npm start
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+9-**Disfruta!**
